@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --background: #ffffff;
+    --foreground: #171717;
+    --desktoph: 648px;
+    --desktopw: 1366px;
+    --movilh: 565px;
+    --movilw: 815px;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+    }
+}
+
+@layer utilities {
+    .smrProjectScreenShotsMovil {
+        width: calc(var(--movilw) * 0.4);
+        height: calc(var(--movilh) * 0.4);
+    }
+
+    .smProjectScreenShotsMovil {
+        width: calc(var(--movilw) * 0.8);
+        height: calc(var(--movilh) * 0.8);
+    }
+
+    .mdProjectScreenShotsMovil {
+        width: calc(var(--movilw) * 1);
+        height: calc(var(--movilh) * 1);
+    }
+
+    .lgProjectScreenShotsDesktop {
+        width: calc(var(--desktopw) * 0.6);
+        height: calc(var(--desktoph) * 0.6);
+    }
+
+    .xlProjectScreenShotsDesktop {
+        width: calc(var(--desktopw) * 0.7);
+        height: calc(var(--desktoph) * 0.7);
+    }
+
+    .smrProjectScreenShotsMovilText {
+        width: calc(var(--movilw) * 0.4);
+    }
+
+    .smProjectScreenShotsMovilText {
+        width: calc(var(--movilw) * 0.8);
+    }
+
+    .mdProjectScreenShotsMovilText {
+        width: calc(var(--movilw) * 1);
+    }
+
+    .lgProjectScreenShotsDesktopText {
+        width: calc(var(--desktopw) * 0.6);
+    }
+
+    .xlProjectScreenShotsDesktopText {
+        width: calc(var(--desktopw) * 0.7);
+    }
+}
+
+body {
+    color: var(--foreground);
+    background: var(--background);
+    font-family: var(--font-jost);
+}
+
+.aboreto {
+    font-family: var(--font-aboreto);
+}
+
+.nameCarouselAnimation {
+    animation: nameCarousel 80s linear infinite;
+}
+
+@keyframes nameCarousel {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-820px * 8));
+    }
+}
+
+.aboutCarouselAnimation {
+    animation: aboutCarousel 80s linear infinite;
+}
+
+@keyframes aboutCarousel {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-1000px * 8));
+    }
+}
