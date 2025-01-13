@@ -213,7 +213,7 @@ export default function ProjectPage() {
                 {/*YOUTUBE BUTTON*/}
                 <div
                   onClick={() => (window.location.href = `${data.videoLink}`)}
-                  className="cursor-pointer bg-[#FF0000] text-white rounded-full px-2 py-1 border border-solid border-[#c11a00]"
+                  className="cursor-pointer bg-[#FF0000] text-white rounded-full px-2 py-1 border-[2px] border-solid border-[#c11a00]"
                 >
                   ver en{" "}
                   <span className="font-bold font-['arial']">YouTube</span>
