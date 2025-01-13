@@ -11,13 +11,6 @@
     --movilw: 815px;
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background: #0a0a0a;
-        --foreground: #ededed;
-    }
-}
-
 @layer utilities {
     .smrProjectScreenShotsMovil {
         width: calc(var(--movilw) * 0.4);
