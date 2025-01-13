@@ -5,7 +5,6 @@ import { projects, plants } from "@/data";
 import { useState, useEffect, lazy, useRef, Suspense } from "react";
 import DragHandleIcon from "@mui/icons-material/DragHandle";
 import CloseIcon from "@mui/icons-material/Close";
-import YouTubeIcon from "@mui/icons-material/YouTube";
 import GitHubIcon from "@mui/icons-material/GitHub";
 const Section4 = lazy(() => import("@/components/section4/section4"));
 
@@ -211,11 +210,15 @@ export default function ProjectPage() {
             </p>
             <div className="flex flex-col justify-center items-center gap-4">
               <div className="flex gap-8 items-center">
-                <YouTubeIcon
+                {/*YOUTUBE BUTTON*/}
+                <div
                   onClick={() => (window.location.href = `${data.videoLink}`)}
-                  className="cursor-pointer text-[#FF0000]"
-                  sx={{ fontSize: "40px" }}
-                />
+                  className="cursor-pointer bg-[#FF0000] text-white rounded-full px-2 py-1 border border-solid border-[#c11a00]"
+                >
+                  ver en{" "}
+                  <span className="font-bold font-['arial']">YouTube</span>
+                </div>
+                {/*GIHUB BUTTON*/}
                 <GitHubIcon
                   onClick={() => (window.location.href = `${data.githubRep}`)}
                   className="cursor-pointer"
