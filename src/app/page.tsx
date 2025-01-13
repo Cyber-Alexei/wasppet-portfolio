@@ -258,9 +258,7 @@ export default function ProjectPage() {
                           alt="project image from gallery"
                           src={`/images/plants/${image[0]}`}
                           fill={true}
-                          quality={100}
                           priority={true}
-                          //unoptimized={true}
                           style={{
                             objectFit: "contain",
                           }}
@@ -279,12 +277,10 @@ export default function ProjectPage() {
                               : `/images/${project}/movil/${i + 1}.png`
                           }
                           fill={true}
-                          quality={100}
                           style={{
                             objectFit: "cover",
                           }}
                           priority={true}
-                          //unoptimized={true}
                         />
                       </div>
                       {item[1].length > 0 && (
