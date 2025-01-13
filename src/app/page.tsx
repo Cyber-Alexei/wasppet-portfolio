@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { projects, plants } from "@/data";
 import { useState, useEffect, lazy, useRef, Suspense } from "react";
@@ -240,7 +241,6 @@ export default function ProjectPage() {
                       <div
                         style={{
                           position: "absolute",
-                          backgroundImage: `url(/images/plants/${image[0]})`,
                           left: `${leftOrRight === "left" ? "0px" : "undefined"}`,
                           right: `${leftOrRight === "right" ? "0px" : "undefined"}`,
                           transform: `${invertImage === true ? "scaleX(-1)" : "undefined"}`,
@@ -249,17 +249,41 @@ export default function ProjectPage() {
                           backgroundPosition: `${leftOrRight === "left" ? "left" : "right"}`,
                         }}
                         className="sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px] lg:w-[700px] lg:h-[700px] w-[300px] h-[300px]"
-                      ></div>
+                      >
+                        <Image
+                          className="absoluet"
+                          alt="project image from gallery"
+                          src={`/images/plants/${image[0]}`}
+                          fill={true}
+                          quality={100}
+                          priority={true}
+                          //unoptimized={true}
+                          style={{
+                            objectFit: "contain",
+                          }}
+                        />
+                      </div>
                       {/*IMAGE*/}
                       <div
-                        style={{
-                          backgroundImage:
+                        className={`relative my-2 smrProjectScreenShotsMovil sm:smProjectScreenShotsMovil md:mdProjectScreenShotsMovil lg:lgProjectScreenShotsDesktop xl:xlProjectScreenShotsDesktop border border-solid border-[#363F1F] z-10 bg-cover bg-center bg-no-repeat`}
+                      >
+                        <Image
+                          className="absolute"
+                          alt="project logo"
+                          src={
                             smallOrWide === "wide"
-                              ? `url(/images/${project}/desktop/${i + 1}.png)`
-                              : `url(/images/${project}/movil/${i + 1}.png)`,
-                        }}
-                        className={`my-2 smrProjectScreenShotsMovil sm:smProjectScreenShotsMovil md:mdProjectScreenShotsMovil lg:lgProjectScreenShotsDesktop xl:xlProjectScreenShotsDesktop border border-solid border-[#363F1F] z-10 bg-cover bg-center bg-no-repeat`}
-                      ></div>
+                              ? `/images/${project}/desktop/${i + 1}.png`
+                              : `/images/${project}/movil/${i + 1}.png`
+                          }
+                          fill={true}
+                          quality={100}
+                          style={{
+                            objectFit: "cover",
+                          }}
+                          priority={true}
+                          //unoptimized={true}
+                        />
+                      </div>
                       {item[1].length > 0 && (
                         <div className="shadow-2xl shadow-black rounded-md smrProjectScreenShotsMovilText sm:smProjectScreenShotsMovilText md:mdProjectScreenShotsMovilText lg:lgProjectScreenShotsDesktopText xl:xlProjectScreenShotsDesktopText p-2 my-6 sm:my-8 md:my-10 z-40 flex items-center justify-center bg-[#363F1F]">
                           <p className="font-light rounded-md text-white text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl">
