@@ -125,7 +125,7 @@ export default function ProjectPage() {
             }
           }
         }}
-        className="relative flex flex-col items-center h-auto w-[100vw] overflow-hidden"
+        className="relative flex flex-col items-center h-auto w-full overflow-hidden"
       >
         <div className="w-full h-full max-w-[1450px] flex flex-col items-center">
           {/*MENU BUTTON*/}
