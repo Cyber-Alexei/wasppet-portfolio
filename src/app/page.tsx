@@ -231,7 +231,7 @@ export default function ProjectPage() {
               </p>
             </div>
           </div>
-          <div className="flex flex-col w-full bg-[#8b9339] py-10">
+          <div className="flex flex-col w-full bg-gray-100 py-10">
             {gallery &&
               gallery.map((item: string[], i: number) => {
                 const image = plants[randomNumbersPlants[i]];
