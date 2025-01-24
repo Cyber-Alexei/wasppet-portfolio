@@ -183,7 +183,7 @@ export const projects = {
     stack:
       "React.js, Next.js, Tailwindcss, TypeScript, JavaScript, Python, Django, Django REST Framework, PostgreSQL",
     videoLink: "https://youtu.be/WXH_-Yl50jg?si=C8TWsQIQso1HMkS5",
-    githubRep: "https://github.com/Cyber-Alexei/wasppet",
+    githubRep: "https://github.com/Cyber-Alexei/wasppet.dev",
     styles: {
       title: "W",
       titleCss: {
