@@ -2,9 +2,7 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { projects, plants } from "@/data";
-import { useState, useEffect, lazy, useRef, Suspense } from "react";
-import DragHandleIcon from "@mui/icons-material/DragHandle";
-import CloseIcon from "@mui/icons-material/Close";
+import { useState, useEffect, lazy, Suspense } from "react";
 import GitHubIcon from "@mui/icons-material/GitHub";
 const Section4 = lazy(() => import("@/components/section4/section4"));
 
@@ -33,9 +31,6 @@ export default function ProjectPage() {
   // Params
   const project: string = "wasppet";
 
-  // Ref
-  const menu = useRef<HTMLDivElement | null>(null);
-
   // State
   const [smallOrWide, setSmallOrWide] = useState<string | null>(null);
   const [data] = useState<projectType>(
@@ -45,34 +40,6 @@ export default function ProjectPage() {
   const [randomNumbersPlants, setRandomNumbersPlants] = useState<
     number[] | null
   >(null);
-  // Icons state
-  const [icon1] = useState(
-    <DragHandleIcon className="noquitmenu" sx={{ fontSize: "30px" }} />,
-  );
-  const [icon2] = useState(
-    <CloseIcon className="noquitmenu" sx={{ fontSize: "28px" }} />,
-  );
-  const [currentIcon, setCurrentIcon] = useState(icon1);
-
-  // Functions
-  const showMenu = () => {
-    if (menu.current?.className.includes("no-show")) {
-      menu.current.className = menu.current.className.replace(
-        "no-show sm:left-[-50%] md:left-[-30%] lg:left-[-20%] left-[-80%]",
-        "show left-0",
-      );
-      setCurrentIcon(icon2);
-      return;
-    }
-    if (menu.current?.className.includes("show")) {
-      menu.current.className = menu.current.className.replace(
-        "show left-0",
-        "no-show sm:left-[-50%] md:left-[-30%] lg:left-[-20%] left-[-80%]",
-      );
-      setCurrentIcon(icon1);
-      return;
-    }
-  };
 
   // Effect
   useEffect(() => {
@@ -107,87 +74,19 @@ export default function ProjectPage() {
     randomNumbersPlants?.length === gallery.length
   )
     return (
-      <div
-        onClick={(e: React.MouseEvent<HTMLDivElement>) => {
-          // Verify user is no clicking an element that must not close the menu
-          const target = e.target;
-          if (
-            target instanceof HTMLElement &&
-            !target.classList.contains("noquitmenu")
-          ) {
-            //------------------------ Close the menu when clicking in any other place/element
-            if (menu.current?.className.includes("show")) {
-              menu.current.className = menu.current.className.replace(
-                "show left-0",
-                "no-show sm:left-[-50%] md:left-[-30%] lg:left-[-20%] left-[-80%]",
-              );
-              setCurrentIcon(icon1);
-            }
-          }
-        }}
-        className="relative flex flex-col items-center h-auto w-full overflow-hidden"
-      >
+      <div className="relative flex flex-col items-center h-auto w-full overflow-hidden">
         <div className="w-full h-full flex flex-col items-center">
           {/*MENU BUTTON*/}
           <div
-            onClick={() => showMenu()}
-            className="cursor-pointer fixed top-5 w-auto h-auto z-[50] right-5 sm:right-10 bg-white rounded-md"
+            onClick={() =>
+              (window.location.href =
+                "https://alexei-torres-portfolio.netlify.app")
+            }
+            className="cursor-pointer fixed text-white font-medium bg-[#363F1F] top-5 w-auto h-auto z-[50] right-5 sm:right-10 px-5 py-2 rounded-md"
           >
-            {currentIcon}
+            Volver al portafolio
           </div>
           {/*MENU BUTTON*/}
-          {/*MENU MODAL*/}
-          <div
-            ref={menu}
-            className="noquitmenu no-show sm:left-[-50%] md:left-[-30%] lg:left-[-20%] left-[-80%] sm:w-[50%] md:w-[30%] lg:w-[20%] w-[80%] h-[100%] fixed top-0  z-[50] bg-[rgba(54,63,31,0.7)] transition-all duration-100"
-          >
-            <div className="flex flex-col text-white bg-[#363F1F] text-lg font-normal">
-              <div
-                onClick={() =>
-                  (window.location.href =
-                    "https://alexei-torres-portfolio.netlify.app")
-                }
-                className="cursor-pointer border-b border-solid border-black"
-                style={{
-                  /*backgroundColor: `${data.styles.titleCss.color}`*/
-                  backgroundColor: "#8b9339",
-                }}
-              >
-                <p className="w-full h-full py-4 pl-2 transition-all duration-100 hover:bg-[rgba(0,0,0,0.5)]">
-                  Home
-                </p>
-              </div>
-              {projects &&
-                Object.keys(projects).map((key, i) => (
-                  <div key={i}>
-                    {key !== project && (
-                      <div
-                        onClick={() => {
-                          if (key === "servo") {
-                            window.location.href =
-                              "https://alexei-torres-servo.netlify.app";
-                          }
-                          if (key === "wasppet") {
-                            window.location.href =
-                              "https://alexei-torres-wasppet.netlify.app";
-                          }
-                        }}
-                        style={{
-                          /*backgroundColor: `${data.styles.titleCss.color}`,*/
-                          backgroundColor: "#8b9339",
-                        }}
-                        className="cursor-pointer border-b border-solid border-black"
-                      >
-                        <p className="w-full h-full py-4 pl-2 transition-all duration-100 hover:bg-[rgba(0,0,0,0.5)]">
-                          {projects[key as keyof typeof projects].name}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                ))}
-            </div>
-          </div>
-          {/*MENU MODAL*/}
           <h1
             /*style={{ textShadow: "1px 4px 8px #999999" }}*/
             className="z-10 text-[50px] sm:text-[70px] md:text-[100px]"
